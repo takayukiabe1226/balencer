@@ -378,12 +378,129 @@
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
+
+    /* ── Hamburger ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 32px; height: 32px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px; z-index: 300;
+    }
+    .nav-hamburger span {
+      display: block; width: 100%; height: 1px;
+      background: white;
+      transition: transform .4s cubic-bezier(.76,0,.24,1), opacity .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── Mobile Menu Overlay ── */
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0;
+      background: #000;
+      z-index: 250;
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 3rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .4s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-size: 2.2rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: white; text-decoration: none;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .4s ease, transform .4s ease, color .2s;
+    }
+    .mobile-menu.open a { opacity: 1; transform: none; }
+    .mobile-menu.open a:nth-child(1) { transition-delay: .1s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: .18s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: .26s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: .34s; }
+    .mobile-menu a:hover { color: rgba(255,255,255,.4); }
+
+    /* ══════════════════════════════
+       MOBILE  (≤ 768px)
+    ══════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* カーソル非表示 */
+      body { cursor: auto; }
+      #cursor, #cursor-ring { display: none; }
+
+      /* Nav */
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      nav { padding: 1.5rem 5%; mix-blend-mode: normal; }
+      .nav-logo { mix-blend-mode: normal; }
+
+      /* Hero */
+      .hero-eyebrow { font-size: .6rem; letter-spacing: .3em; }
+      .hero-tagline { font-size: .75rem; letter-spacing: .25em; }
+
+      /* Sections */
+      section { padding: 6rem 6%; }
+      #numbers { padding: 6rem 6%; }
+
+      /* About */
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+      .about-visual { height: 260px; }
+      .av-box:nth-child(1) { width: 180px; height: 240px; }
+      .av-box:nth-child(2) { width: 120px; height: 120px; }
+      .av-box:nth-child(3) { width: 60px; height: 60px; right: 0; }
+      .section-body { max-width: 100%; }
+
+      /* Business */
+      .business-grid { grid-template-columns: 1fr; }
+      .biz-card { padding: 2.5rem 2rem 3rem; }
+
+      /* Numbers */
+      .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+        margin-top: 3.5rem;
+      }
+      .num-value { font-size: 3rem; }
+
+      /* Vision */
+      #vision { min-height: auto; padding: 6rem 6%; }
+
+      /* Contact */
+      .contact-title { font-size: clamp(2.5rem, 12vw, 5rem); }
+
+      /* Footer */
+      footer {
+        flex-direction: column; gap: 1rem;
+        text-align: center; padding: 2rem 5%;
+      }
+    }
+
+    /* スマホ小型 (≤ 390px) */
+    @media (max-width: 390px) {
+      .hero-title { letter-spacing: .02em; }
+      .numbers-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about"    onclick="closeMobileMenu()">About</a>
+    <a href="#business" onclick="closeMobileMenu()">Business</a>
+    <a href="#numbers"  onclick="closeMobileMenu()">Numbers</a>
+    <a href="#contact"  onclick="closeMobileMenu()">Contact</a>
+  </div>
 
   <!-- Nav -->
   <nav>
@@ -394,6 +511,9 @@
       <li><a href="#numbers">Numbers</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- Hero -->
@@ -577,7 +697,8 @@
     scene.add(pl2);
 
     // ── Particles ──
-    const N = 2500;
+    const isMobile = window.innerWidth <= 768;
+    const N = isMobile ? 800 : 2500;
     const pos = new Float32Array(N * 3);
     for (let i = 0; i < N; i++) {
       pos[i*3]   = (Math.random()-.5)*22;
@@ -753,6 +874,24 @@
     });
   }, { threshold: .5 });
   counters.forEach(el => countObs.observe(el));
+
+  // ═══════════════════════════════════════
+  //  Hamburger Menu
+  // ═══════════════════════════════════════
+  const hamburger   = document.getElementById('hamburger');
+  const mobileMenu  = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
   </script>
 </body>
 </html>
