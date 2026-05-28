@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>御見積書｜株式会社NAILIT様 業務基盤構築・DX推進支援｜株式会社バレンサー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon: #E6FF2F;
+    --neon-tint: rgba(230,255,47,0.18);
+    --ink: #000000;
+    --ink-2: #3A3838;
+    --ink-3: #595959;
+    --ink-4: #757070;
+    --bg: #FFFFFF;
+    --bg-2: #F5F3F3;
+    --bg-3: #F2F2F2;
+    --border: #D0CECE;
+    --border-soft: #E2E0DA;
+    --font-en: 'Poppins', system-ui, sans-serif;
+    --font-ja: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+    --font-script: 'Caveat', cursive;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink-2); font-family: var(--font-ja); font-size: 13px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 56px 56px 80px; }
+
+  /* Header */
+  .doc-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 40px; }
+  .brand-block .label { font-family: var(--font-script); font-size: 22px; color: var(--ink-3); line-height: 1; }
+  .brand-block .title { font-family: var(--font-en); font-weight: 800; font-size: 44px; letter-spacing: -0.02em; color: var(--ink); line-height: 1; margin-top: 4px; }
+  .brand-block .ja { font-size: 13px; color: var(--ink-3); margin-top: 12px; letter-spacing: 0.05em; }
+  .meta { text-align: right; font-size: 12px; color: var(--ink-3); line-height: 1.9; }
+  .meta strong { color: var(--ink); font-weight: 700; }
+
+  /* Parties */
+  .parties { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 48px; }
+  .party { border: 1px solid var(--border); padding: 20px 22px; }
+  .party .role { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px; }
+  .party .name { font-family: var(--font-ja); font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 8px; }
+  .party .detail { font-size: 12px; color: var(--ink-3); line-height: 1.8; }
+
+  /* Position block */
+  .position-block { border: 2px solid var(--ink); padding: 22px 26px; margin-bottom: 36px; background: #fff; position: relative; }
+  .position-block::before { content: ''; position: absolute; top: -1px; left: -1px; width: 8px; height: calc(100% + 2px); background: var(--neon); }
+  .position-label { font-family: var(--font-ja); font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 8px; letter-spacing: 0.05em; }
+  .position-block p { font-size: 13px; line-height: 1.85; color: var(--ink-2); }
+  .position-block strong { color: var(--ink); font-weight: 700; background: linear-gradient(180deg, transparent 60%, var(--neon-tint) 60%); padding: 0 2px; }
+
+  /* Section */
+  section { margin-bottom: 48px; page-break-inside: avoid; }
+  .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+  .section-head .en { font-family: var(--font-script); font-size: 24px; color: var(--ink-3); line-height: 1; }
+  .section-head .ja { font-family: var(--font-ja); font-weight: 700; font-size: 18px; color: var(--ink); }
+  .section-head .badge { font-family: var(--font-en); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; background: var(--neon); color: var(--ink); padding: 3px 8px; margin-left: auto; }
+
+  /* Approach */
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .approach-item { border: 1px solid var(--border-soft); padding: 18px 16px; }
+  .approach-item .num { font-family: var(--font-en); font-size: 28px; font-weight: 800; color: var(--bg-3); line-height: 1; margin-bottom: 8px; }
+  .approach-item .head { font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 6px; }
+  .approach-item .body { font-size: 11px; color: var(--ink-3); line-height: 1.75; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .table-section-label td { padding: 14px 12px 6px; font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); border-bottom: 1px solid var(--border-soft); }
+  thead th { background: var(--ink); color: #fff; font-family: var(--font-ja); font-weight: 500; text-align: left; padding: 10px 12px; font-size: 11px; letter-spacing: 0.05em; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 12px; border-bottom: 1px solid var(--border-soft); vertical-align: top; color: var(--ink-2); }
+  tbody td.no { width: 32px; color: var(--ink-4); font-family: var(--font-en); font-size: 11px; }
+  tbody td.item { width: 200px; font-weight: 700; color: var(--ink); }
+  tbody td.desc { color: var(--ink-3); font-size: 11px; line-height: 1.7; }
+  tbody td.amount { width: 120px; text-align: right; font-family: var(--font-en); font-weight: 600; color: var(--ink); white-space: nowrap; }
+  tbody tr.discount td { background: #FAFFF0; }
+  tbody tr.discount td.amount { color: #2D6A4F; }
+  tfoot td { padding: 12px; font-size: 12px; border-top: 1px solid var(--ink); }
+  tfoot td.label { text-align: right; color: var(--ink-3); }
+  tfoot td.value { text-align: right; font-family: var(--font-en); font-weight: 700; color: var(--ink); white-space: nowrap; }
+  tfoot tr.total td { font-size: 16px; background: var(--bg-3); border-top: 2px solid var(--ink); border-bottom: none; }
+  tfoot tr.total td.value .mark { background: linear-gradient(180deg, transparent 60%, var(--neon-tint) 60%); padding: 0 4px; }
+
+  /* Monthly box */
+  .monthly-box { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; border: 1px solid var(--border); padding: 22px 24px; margin-top: 16px; }
+  .monthly-box .m-label { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+  .monthly-box .m-desc { font-size: 11px; color: var(--ink-3); line-height: 1.7; }
+  .monthly-box .m-amount { text-align: right; }
+  .monthly-box .m-amount .m-num { font-family: var(--font-en); font-weight: 800; font-size: 32px; color: var(--ink); letter-spacing: -0.02em; line-height: 1; }
+  .monthly-box .m-amount .m-unit { font-size: 11px; color: var(--ink-3); margin-top: 4px; }
+
+  /* Summary */
+  .summary-card { background: var(--ink); color: #fff; padding: 32px 36px; position: relative; }
+  .summary-card .card-badge { position: absolute; top: 20px; right: 20px; font-family: var(--font-en); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; background: var(--neon); color: var(--ink); padding: 4px 8px; }
+  .summary-card .card-label { font-weight: 700; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 6px; }
+  .summary-card .card-amount { font-family: var(--font-en); font-size: 48px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; }
+  .summary-card .card-amount .mark { background: var(--neon); color: var(--ink); padding: 2px 10px; }
+  .summary-card .card-tax { font-size: 11px; color: rgba(255,255,255,.5); }
+  .summary-rows { margin-top: 24px; border-top: 1px solid rgba(255,255,255,.15); padding-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .summary-row { display: flex; justify-content: space-between; font-size: 12px; }
+  .summary-row .sr-label { color: rgba(255,255,255,.6); }
+  .summary-row .sr-val { font-family: var(--font-en); font-weight: 600; color: #fff; }
+  .summary-row.highlight .sr-label { color: rgba(255,255,255,.8); }
+  .summary-row.highlight .sr-val { color: var(--neon); }
+
+  /* Partnership */
+  .partnership-list { list-style: none; padding: 0; margin: 12px 0 0; }
+  .partnership-list li { font-size: 12px; line-height: 1.8; padding: 8px 0 8px 20px; border-bottom: 1px dotted var(--border-soft); color: var(--ink-2); position: relative; }
+  .partnership-list li:last-child { border-bottom: none; }
+  .partnership-list li::before { content: '→'; position: absolute; left: 0; color: var(--ink-4); font-family: var(--font-en); }
+
+  /* Notes */
+  .notes { background: var(--bg-2); padding: 24px 28px; font-size: 12px; line-height: 1.85; }
+  .notes ol { padding-left: 20px; }
+  .notes li { margin-bottom: 8px; color: var(--ink-2); }
+
+  /* Footer */
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; }
+  .footer-brand .name { font-family: var(--font-en); font-weight: 700; font-size: 14px; color: var(--ink); }
+  .footer-brand .tagline { font-family: var(--font-script); font-size: 16px; color: var(--ink-4); }
+  .footer-legal { font-size: 10px; color: var(--ink-4); text-align: right; line-height: 1.8; }
+
+  @media print {
+    .page { padding: 32px 40px; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="doc-header">
+    <div class="brand-block">
+      <div class="label">Estimate</div>
+      <div class="title">QUOTATION</div>
+      <div class="ja">御見積書</div>
+    </div>
+    <div class="meta">
+      <div>発行日　<strong>2026年5月28日</strong></div>
+      <div>有効期限　<strong>2026年6月28日</strong></div>
+      <div>見積番号　<strong>EST-2026-0528-NL</strong></div>
+    </div>
+  </header>
+
+  <!-- ── Parties ── -->
+  <div class="parties">
+    <div class="party">
+      <div class="role">To / お見積り先</div>
+      <div class="name">株式会社NAILIT 様</div>
+      <div class="detail">
+        ご担当者様 御中
+      </div>
+    </div>
+    <div class="party">
+      <div class="role">From / 提出者</div>
+      <div class="name">株式会社バレンサー</div>
+      <div class="detail">
+        〒XXX-XXXX 大阪府<br>
+        tabe@balencer.jp<br>
+        balencer.jp
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 位置づけ（1枚目・金額なし） ── -->
+  <div class="position-block">
+    <div class="position-label">本プロジェクトの位置づけ</div>
+    <p>
+      催事型フィールドセールスという、業界標準ツールがまだ確立されていない領域において、<br>
+      御社は<strong>100名超の営業力</strong>と<strong>複数の代理店ネットワーク</strong>を武器に成長を続けてきました。<br>
+      今回の取り組みは「ツール導入」ではなく、<strong>業務フローごと再設計し、現場に定着するまでを一気に通す</strong>プロジェクトです。<br>
+      Phase 0のヒアリング・設計から入り、Phase 1での基盤構築・現場定着・月次伴走まで、バレンサーが責任を持って関与します。
+    </p>
+  </div>
+
+  <!-- ── Approach ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Our Approach</span>
+      <span class="ja">バレンサーが約束すること</span>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="num">01</div>
+        <div class="head">入力が続く設計</div>
+        <div class="body">スマホ30秒完結の現場フォームを設計します。Chatworkが使えているなら、Notionも使えます。「難しい」と言われる前に、使いたくなる設計を作ります。</div>
+      </div>
+      <div class="approach-item">
+        <div class="num">02</div>
+        <div class="head">データが勝手に集まる仕組み</div>
+        <div class="body">入力→自動集計→Slack通知まで自動化します。転換率・売上着地・ブース収益が、誰かが集計しなくても常時見える状態を作ります。</div>
+      </div>
+      <div class="approach-item">
+        <div class="num">03</div>
+        <div class="head">定着まで責任を持つ</div>
+        <div class="body">作って終わりにしません。先行グループ試験→全社展開→月次レビューと改善サイクルを回します。3ヶ月後も使われている状態を目指します。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 見積項目 ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Estimate</span>
+      <span class="ja">お見積り内容</span>
+      <span class="badge">PHASE 0 + PHASE 1</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="no">#</th>
+          <th>項目</th>
+          <th>内容</th>
+          <th class="right" style="width:120px;">金額（税抜）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Phase 0 -->
+        <tr class="table-section-label"><td colspan="4">Phase 0 — 現状棚卸し・移行設計（期間目安：1ヶ月）</td></tr>
+        <tr>
+          <td class="no">1</td>
+          <td class="item">ヒアリング・As-Is可視化</td>
+          <td class="desc">現状業務フローの詳細ヒアリング。現行ツール棚卸し（Chatwork・スプレッドシート・Googleドライブ）。KPI定義の合意（フェーズ・転換率・OK率）。As-Is業務フロー図の作成。</td>
+          <td class="amount">¥250,000</td>
+        </tr>
+        <tr>
+          <td class="no">2</td>
+          <td class="item">To-Be業務フロー設計</td>
+          <td class="desc">最大ペインの特定と解消順序の合意。To-Be業務フロー設計。現場入力フローの設計（スマホ完結 or OCR）。Slackチャンネル構造設計。</td>
+          <td class="amount">¥400,000</td>
+        </tr>
+        <tr>
+          <td class="no">3</td>
+          <td class="item">DBスキーマ設計・Notionワイヤー設計</td>
+          <td class="desc">現行スプレッドシート・Chatworkデータの棚卸しと整理方針の合意。Notion DB画面ワイヤー設計（現場・管理者・役員各ビュー）。フィールド・リレーション定義。自動化・通知ルール定義。Phase 1移行スケジュール策定。</td>
+          <td class="amount">¥400,000</td>
+        </tr>
+
+        <!-- Phase 1 -->
+        <tr class="table-section-label"><td colspan="4">Phase 1 — 基盤構築（期間目安：3〜4ヶ月）</td></tr>
+        <tr>
+          <td class="no">4</td>
+          <td class="item">Google Workspace 導入支援</td>
+          <td class="desc">共有ドライブ設計・権限設計（社員・代理店・役員別）。既存データ移行支援（個人ドライブ→共有ドライブ）。Googleカレンダー設定（ブース申請期限管理）。管理者向けレクチャー。Google Workspaceプラン選定支援。</td>
+          <td class="amount">¥500,000</td>
+        </tr>
+        <tr>
+          <td class="no">5</td>
+          <td class="item">Slack 導入・Chatwork移行</td>
+          <td class="desc">ワークスペース作成・チャンネル設計（社内・用途・エリア別）。社員メンバー招待・権限設定。社員向けレクチャー。Chatwork廃止・移行完了。</td>
+          <td class="amount">¥150,000</td>
+        </tr>
+        <tr>
+          <td class="no">6</td>
+          <td class="item">Notion DB 設計・構築</td>
+          <td class="desc">営業DB（フェーズ管理・転換率ロールアップ・売上予測フォーミュラ・現場入力フォーム）。ブースDB（施設別・OK率・申請期限連携）。クレームDB（エスカレーションフロー）。担当者DB。DB間リレーション設計・実装。役員・リーダー・現場別ビュー作成。※ 既存データのクレンジング・移行はPhase 0棚卸し結果をもとに範囲確定後、別途お見積もりとなります。</td>
+          <td class="amount">¥1,500,000</td>
+        </tr>
+        <tr>
+          <td class="no">7</td>
+          <td class="item">自動化実装（Make）</td>
+          <td class="desc">KPI未達アラート・OK率低下アラート・ブース申請期限アラート・重クレームアラートのSlack自動通知。日次KPIサマリー・週次ランキング自動配信。全シナリオの動作確認・総合テスト。</td>
+          <td class="amount">¥400,000</td>
+        </tr>
+        <tr>
+          <td class="no">8</td>
+          <td class="item">契約書管理設計</td>
+          <td class="desc">Googleドライブ契約書フォルダ設計・権限設定。Notion DBとの紐付け設計。</td>
+          <td class="amount">¥150,000</td>
+        </tr>
+        <tr>
+          <td class="no">9</td>
+          <td class="item">セルフオンボーディング設計＋キーマン研修</td>
+          <td class="desc">Notion内操作マニュアル設計・作成（現場・管理者別）。操作説明動画制作。バックオフィス主要メンバー向け研修（2回）。先行グループ試験導入・振り返り・改善。入力・運用ルール策定。</td>
+          <td class="amount">¥500,000</td>
+        </tr>
+        <tr>
+          <td class="no">10</td>
+          <td class="item">プロジェクト統括・品質保証</td>
+          <td class="desc">Phase 1全体のプロジェクト管理。週次進捗確認・ステータス共有・課題解決。バレンサー内部QAレビュー。クライアント側キーマンとの調整・合意形成。納品物の品質最終確認。</td>
+          <td class="amount">¥500,000</td>
+        </tr>
+
+      </tbody>
+      <tfoot>
+        <tr class="total">
+          <td colspan="3" class="label" style="font-weight:700;">Phase 0 + Phase 1 構築　合計（税抜）</td>
+          <td class="value"><span class="mark">¥4,750,000</span></td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <!-- ── 月次伴走 ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Monthly Retainer</span>
+      <span class="ja">Phase 1 月次伴走</span>
+      <span class="badge">継続</span>
+    </div>
+    <p style="font-size:12px;color:var(--ink-3);margin-bottom:14px;">
+      構築後6ヶ月〜継続。作って終わりにしない設計です。データが溜まるほど改善の精度が上がります。
+    </p>
+    <div class="monthly-box">
+      <div>
+        <div class="m-label">月次レビュー・改善実装・現場フォロー</div>
+        <div class="m-desc">
+          月次KPIレビュー（実績確認・課題共有）／Notion改善実装・自動化チューニング（数時間/月）／<br>
+          現場スタッフ定着フォロー・質問対応／月次レポート提出
+        </div>
+      </div>
+      <div class="m-amount">
+        <div class="m-num">¥500,000</div>
+        <div class="m-unit">/ 月（税抜）　最低6ヶ月〜</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Future Partnership ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Future Partnership</span>
+      <span class="ja">Phase 2 以降の展開（参考）</span>
+    </div>
+    <p style="font-size:12px;color:var(--ink-3);margin-bottom:12px;">
+      Phase 1でデータが3ヶ月以上蓄積されたタイミングで、以下の拡張を検討できます。本見積もりの対象外です。
+    </p>
+    <ul class="partnership-list">
+      <li>個人分析・成長率・TOP/ミドル/グロース層の自動分類（Phase 2）</li>
+      <li>役員・リーダー・現場別の高度ダッシュボード（Phase 2）</li>
+      <li>売上・粗利・コミッション管理（経理マスタ整備後）</li>
+      <li>AIシャイン（旧バレンサーAI）導入：AI秘書・経営分析AI・社内ナレッジAI。デジタル化・AI導入補助金2026の活用で実質負担を削減できる可能性があります。</li>
+    </ul>
+  </section>
+
+  <!-- ── Summary ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Summary</span>
+      <span class="ja">費用サマリー</span>
+    </div>
+    <div class="summary-card">
+      <div class="card-badge">RECOMMENDED</div>
+      <div class="card-label">Phase 0 + Phase 1 構築　ご提案価格（税抜）</div>
+      <div class="card-amount"><span class="mark">¥4,750,000</span></div>
+      <div class="card-tax">別途消費税（10%）¥475,000 → 税込合計 ¥5,225,000</div>
+      <div class="summary-rows">
+        <div class="summary-row">
+          <span class="sr-label">Phase 0　現状棚卸し・移行設計</span>
+          <span class="sr-val">¥1,050,000</span>
+        </div>
+        <div class="summary-row">
+          <span class="sr-label">Phase 1　基盤構築</span>
+          <span class="sr-val">¥3,700,000</span>
+        </div>
+        <div class="summary-row" style="border-top:1px solid rgba(255,255,255,.15);padding-top:10px;margin-top:4px;">
+          <span class="sr-label">Phase 1 月次伴走（別途・最低6ヶ月）</span>
+          <span class="sr-val">¥500,000 / 月〜</span>
+        </div>
+        <div class="summary-row highlight">
+          <span class="sr-label">お支払い条件</span>
+          <span class="sr-val">Phase 0着手時50% ／ 完了時50%　Phase 1着手時50% ／ 完了時50%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why this price? ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Why this price?</span>
+      <span class="ja">この価格の根拠</span>
+    </div>
+    <p style="font-size:12px;color:var(--ink-3);margin-bottom:16px;">
+      バレンサーの提案は「Notionを入れる」作業ではありません。<strong style="color:var(--ink);">業務フローを再設計し、100名組織に定着するまでを責任持って通す</strong>プロジェクトです。同等スコープの市場相場と比較しています。
+    </p>
+    <table style="font-size:12px;">
+      <thead>
+        <tr>
+          <th style="width:160px;"></th>
+          <th style="background:var(--ink);color:var(--neon);text-align:center;padding:10px 14px;">BALENCER 提案</th>
+          <th style="text-align:center;padding:10px 14px;">Salesforce 導入</th>
+          <th style="text-align:center;padding:10px 14px;">一般 Notion コンサル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item" style="padding:10px 12px;">初期費用</td>
+          <td style="text-align:center;padding:10px 12px;font-family:var(--font-en);font-weight:700;background:#FAFFF0;">¥4,750,000</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);">¥500,000〜3,000,000</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);">¥300,000〜500,000</td>
+        </tr>
+        <tr>
+          <td class="item" style="padding:10px 12px;">月次費用</td>
+          <td style="text-align:center;padding:10px 12px;font-family:var(--font-en);font-weight:700;background:#FAFFF0;">¥500,000</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);">ライセンス¥252万＋<br>保守¥50万〜</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);">¥10,000〜50,000</td>
+        </tr>
+        <tr>
+          <td class="item" style="padding:10px 12px;">スコープ</td>
+          <td style="text-align:center;padding:10px 12px;background:#FAFFF0;font-size:11px;">業務再設計＋構築＋<br>100名定着まで</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);font-size:11px;">ツール提供のみ<br>（設計・定着は別途）</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);font-size:11px;">単純DB構築のみ<br>（業務設計・定着なし）</td>
+        </tr>
+        <tr>
+          <td class="item" style="padding:10px 12px;">現場完結</td>
+          <td style="text-align:center;padding:10px 12px;background:#FAFFF0;font-weight:700;">✅ スマホ完結</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);">❌ PC前提</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);">△ 設計次第</td>
+        </tr>
+        <tr>
+          <td class="item" style="padding:10px 12px;border-bottom:none;">伴走・定着支援</td>
+          <td style="text-align:center;padding:10px 12px;background:#FAFFF0;font-weight:700;border-bottom:none;">✅ 込み</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);border-bottom:none;">❌ 別途要</td>
+          <td style="text-align:center;padding:10px 12px;color:var(--ink-3);border-bottom:none;">❌ なし</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--ink-4);margin-top:12px;line-height:1.8;">
+      ※ Salesforce Sales Cloud 120ユーザー想定時：ライセンス¥21,000/user×120名＝¥2,520,000/月。保守・カスタマイズ別途。<br>
+      ※ バレンサーの実効単価は約¥20,000/h（日本のDX業務改革コンサル・ハンズオン型の中位水準）。<br>
+      ※ Phase 0+1＋月次6ヶ月の総費用¥7,750,000は御社年商（約16億円）の0.48%以内に収まります。
+    </p>
+  </section>
+
+  <!-- ── Notes ── -->
+  <section>
+    <div class="section-head">
+      <span class="en">Notes</span>
+      <span class="ja">備考・前提条件</span>
+    </div>
+    <div class="notes">
+      <ol>
+        <li>本見積もりはすべて<strong>税抜表記</strong>です。別途消費税（10%）が加算されます。</li>
+        <li>Google Workspace・Notion・Slack・Make（Make.com）の<strong>利用料は別途</strong>、お客様にて直接ご契約・ご負担いただきます。</li>
+        <li>Phase 0完了後、ヒアリング結果に基づき<strong>Phase 1の確定見積もり</strong>を別途提出します。本見積もりはPhase 1の参考レンジです。</li>
+        <li><strong>既存データ（スプレッドシート・Chatwork等）のクレンジング・整理・移行作業</strong>は本見積もりの対象外です。Phase 0棚卸し結果をもとにデータ範囲・量を確認後、別途お見積もりします。</li>
+        <li>Phase 1の構築期間目安は<strong>3〜4ヶ月</strong>。仕様変更・スコープ拡大が生じた場合は別途お見積もりします。</li>
+        <li>代理店への展開数・規模によって、オンボーディング工数が変動する場合があります。</li>
+        <li>お支払いは<strong>銀行振込（請求書発行後30日以内）</strong>でお願いします。</li>
+        <li>本見積もりの<strong>有効期限は2026年6月28日</strong>です。</li>
+        <li>本書の著作権は株式会社バレンサーに帰属します。<strong>社外への二次共有・転載は禁止</strong>します。</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-brand">
+      <div class="name">BALENCER Inc.</div>
+      <div class="tagline">for loved ones.</div>
+    </div>
+    <div class="footer-legal">
+      © 2026 株式会社バレンサー　All rights reserved.<br>
+      本書の無断転載・二次利用を禁じます。<br>
+      tabe@balencer.jp　／　balencer.jp
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
