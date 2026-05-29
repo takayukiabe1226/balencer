@@ -9,8 +9,8 @@
   body { font-family: "Noto Sans JP", sans-serif; background: #F4F5F7; color: #1A1A2E; }
 
   /* ── Nav ── */
-  .nav { position: sticky; top: 0; z-index: 100; background: #1A1A2E; display: flex; gap: 0; border-bottom: 3px solid #E6FF2F; }
-  .nav a { color: #aaa; text-decoration: none; padding: 14px 20px; font-size: 13px; font-weight: 600; transition: all .2s; white-space: nowrap; }
+  .nav { position: sticky; top: 0; z-index: 100; background: #1A1A2E; display: flex; gap: 0; border-bottom: 3px solid #E6FF2F; overflow-x: auto; }
+  .nav a { color: #aaa; text-decoration: none; padding: 12px 14px; font-size: 11px; font-weight: 600; transition: all .2s; white-space: nowrap; }
   .nav a:hover, .nav a.active { color: #E6FF2F; background: rgba(230,255,47,.07); }
   .nav .brand { color: #E6FF2F; padding: 14px 24px; font-weight: 700; font-size: 13px; border-right: 1px solid #333; }
 
@@ -137,6 +137,24 @@
   .compare-to h4 { color: #1B5E20; }
   .compare-item { font-size: 12px; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,.07); display: flex; align-items: flex-start; gap: 6px; }
   .compare-item:last-child { border-bottom: none; }
+
+  /* ── 全社DX To-Be（案2）用 ── */
+  .layer-stack { display: flex; flex-direction: column; gap: 6px; max-width: 720px; }
+  .layer { border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 16px; }
+  .layer-num { font-size: 10px; font-weight: 700; opacity: .65; min-width: 90px; text-align: center; line-height: 1.4; }
+  .layer-title { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+  .layer-desc { font-size: 11px; opacity: .8; }
+  .persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  @media (max-width: 700px) { .persona-grid { grid-template-columns: 1fr; } }
+  .persona-card { border-radius: 12px; padding: 18px; border: 2px solid transparent; }
+  .flow-line { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,.06); line-height: 1.5; }
+  .flow-line:last-child { border-bottom: none; }
+  .flow-line-arrow { color: #999; font-size: 14px; padding-top: 1px; flex-shrink: 0; }
+  .gws-pillars { display: flex; gap: 16px; flex-wrap: wrap; }
+  .gws-pillar { flex: 1; min-width: 180px; background: #E3F2FD; border: 2px solid #90CAF9; border-radius: 12px; padding: 16px; }
+  .gws-pillar-icon { font-size: 24px; margin-bottom: 8px; }
+  .gws-pillar-title { font-weight: 700; font-size: 13px; color: #0D47A1; margin-bottom: 6px; }
+  .gws-pillar-body { font-size: 11px; color: #444; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -150,6 +168,7 @@
   <a href="#" onclick="show('migration',this)">⑤ 移行計画</a>
   <a href="#" onclick="show('aishine',this)">⑥ AIシャイン 全体像</a>
   <a href="#" onclick="show('aimap',this)">⑦ 機能マップ（NAILIT特化）</a>
+  <a href="#" onclick="show('tobe2',this)">⑧ 全社DX To-Be（案2）</a>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -270,6 +289,30 @@
 <div id="tobe" class="section">
   <div class="section-title">② To-Be フロー（目指す姿）</div>
   <div class="section-sub">Phase 1完了後の業務フロー。入力は現場で完結し、管理側はリアルタイムで状況を把握できる。</div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-icon" style="background:#E3F2FD">🏗</div>基盤：Google Workspace（全社インフラ）</div>
+    <div class="gws-pillars">
+      <div class="gws-pillar">
+        <div class="gws-pillar-icon">🔑</div>
+        <div class="gws-pillar-title">アカウント管理</div>
+        <div class="gws-pillar-body">入退社に連動して権限を付与・剥奪。個人のGmailアカウントに情報が残る状態を解消。「誰がいなくなっても会社の情報は会社に残る」基盤をつくる。</div>
+      </div>
+      <div class="gws-pillar">
+        <div class="gws-pillar-icon">☁️</div>
+        <div class="gws-pillar-title">共有ドライブ</div>
+        <div class="gws-pillar-body">契約書・資料・ロープレ動画を会社所有の共有ドライブへ移行。担当者が不在でも誰でも参照できる。フォルダ権限でアクセス制御も可能。</div>
+      </div>
+      <div class="gws-pillar">
+        <div class="gws-pillar-icon">📅</div>
+        <div class="gws-pillar-title">カレンダー共有</div>
+        <div class="gws-pillar-body">ブース申請期限・催事スケジュール・キックオフ日程を全社カレンダーで共有。リマインダー自動送信で期限漏れを防ぐ。</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:10px 14px;background:#FFF9C4;border-radius:8px;font-size:12px;color:#5D4037;border:1px solid #F0C040;">
+      💡 <b>このGWS基盤があるから、下の営業入力フロー（ルートA・B）と Slack 連携が正しく機能する。</b> GWSなしでは個人アカウントに情報が分散し続ける。
+    </div>
+  </div>
 
   <div class="card">
     <div class="card-title"><div class="card-icon" style="background:#E8F5E9">📱</div>催事当日〜翌日：営業入力フロー（新）</div>
@@ -1038,6 +1081,159 @@
           🌅 毎朝の自動サマリー配信
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ⑧ 全社DX To-Be（案2）
+══════════════════════════════════════════ -->
+<div id="tobe2" class="section">
+  <div class="section-title">⑧ 全社DX To-Be（案2）— 全社最適化の姿</div>
+  <div class="section-sub">GWSを全社基盤に置き、Googleフォームで日報収集する構成。Phase 0のヒアリング後に案1と比較して選択する。</div>
+
+  <!-- カード1：5層アーキテクチャ -->
+  <div class="card">
+    <div class="card-title"><div class="card-icon" style="background:#E3F2FD">🏗</div>全社DX アーキテクチャ（5層構造）</div>
+    <div class="layer-stack">
+      <div class="layer" style="background:#E0F2F1;border:2px solid #80CBC4;">
+        <div class="layer-num" style="color:#00695C;">Layer 4<br>自動化</div>
+        <div>
+          <div class="layer-title" style="color:#00695C;">Make（自動化エンジン）</div>
+          <div class="layer-desc" style="color:#004D40;">フォーム→Notion同期 / 速報集計→Slack送信 / 契約期限アラート / KPI未達通知</div>
+        </div>
+      </div>
+      <div class="layer" style="background:#EDE7F6;border:2px solid #CE93D8;">
+        <div class="layer-num" style="color:#4A148C;">Layer 3<br>コミュニケーション</div>
+        <div>
+          <div class="layer-title" style="color:#4A148C;">Slack</div>
+          <div class="layer-desc" style="color:#311B92;">#kpi-daily-summary（毎朝自動）/ #important-alert / エリア別ch / 代理店ゲストch</div>
+        </div>
+      </div>
+      <div class="layer" style="background:#FBE9E7;border:2px solid #FFAB91;">
+        <div class="layer-num" style="color:#BF360C;">Layer 2<br>管理・集約</div>
+        <div>
+          <div class="layer-title" style="color:#BF360C;">Notion</div>
+          <div class="layer-desc" style="color:#7F2700;">営業DB・案件DB・契約DB（Drive連携＋期限アラート）・SOP/マニュアルwiki・KPIダッシュボード</div>
+        </div>
+      </div>
+      <div class="layer" style="background:#E8F5E9;border:2px solid #A5D6A7;">
+        <div class="layer-num" style="color:#1B5E20;">Layer 1<br>データ収集</div>
+        <div>
+          <div class="layer-title" style="color:#1B5E20;">Google Forms → Google スプレッドシート</div>
+          <div class="layer-desc" style="color:#1B5E20;">スマホから日報入力（30秒）→ Sheetsに自動蓄積 → Makeを介してNotionに同期</div>
+        </div>
+      </div>
+      <div class="layer" style="background:#E3F2FD;border:2px solid #90CAF9;">
+        <div class="layer-num" style="color:#0D47A1;">Layer 0<br>基盤</div>
+        <div>
+          <div class="layer-title" style="color:#0D47A1;">Google Workspace（全社インフラ）</div>
+          <div class="layer-desc" style="color:#0D47A1;">アカウント管理 / 共有ドライブ（契約書・動画） / カレンダー共有 / セキュリティ権限</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:10px 14px;background:#F3E5F5;border-radius:8px;font-size:12px;color:#4A148C;border:1px solid #CE93D8;">
+      💡 <b>下のレイヤーが上を支える構造。</b> GWSなしにLayer 1〜4は機能しない。Layer 1のデータ蓄積なしにMake・Slackの自動化は空振りになる。
+    </div>
+  </div>
+
+  <!-- カード2：役割別フロー -->
+  <div class="card">
+    <div class="card-title"><div class="card-icon" style="background:#E8F5E9">👥</div>役割別フロー（3ペルソナ）</div>
+    <div class="persona-grid">
+      <div class="persona-card" style="background:#F1F8E9;border-color:#A5D6A7;">
+        <div style="font-size:22px;margin-bottom:8px;">📱</div>
+        <div style="font-weight:700;font-size:14px;color:#1B5E20;margin-bottom:4px;">現場営業（100名）</div>
+        <div style="font-size:11px;color:#888;margin-bottom:12px;">催事ブースで毎日使う</div>
+        <div class="flow-line"><span class="flow-line-arrow">1.</span><span>Googleフォームで日報入力（名前・ブース・フェーズ・金額）<br><b style="color:#2E7D32;">約30秒・スマホ完結</b></span></div>
+        <div class="flow-line"><span class="flow-line-arrow">2.</span><span>送信後はSlackで速報確認（自動投稿）</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">3.</span><span>クレームはSlack #claim-escalation に投稿</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">4.</span><span>マニュアル・ロープレ動画はNotionまたはGDriveで参照</span></div>
+      </div>
+      <div class="persona-card" style="background:#E3F2FD;border-color:#90CAF9;">
+        <div style="font-size:22px;margin-bottom:8px;">👔</div>
+        <div style="font-weight:700;font-size:14px;color:#0D47A1;margin-bottom:4px;">マネジメント（役員・リーダー）</div>
+        <div style="font-size:11px;color:#888;margin-bottom:12px;">意思決定とKPI管理</div>
+        <div class="flow-line"><span class="flow-line-arrow">1.</span><span>毎朝Slackに自動サマリー（昨日の全体実績・エリア別）</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">2.</span><span>KPI未達・重クレームはSlack即時アラートで検知</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">3.</span><span>Notionダッシュボードで個人・エリア・ブース別を詳細確認</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">4.</span><span>売上着地予測・転換率トレンドをリアルタイム把握</span></div>
+      </div>
+      <div class="persona-card" style="background:#FFF3E0;border-color:#FFCC80;">
+        <div style="font-size:22px;margin-bottom:8px;">🏢</div>
+        <div style="font-weight:700;font-size:14px;color:#BF360C;margin-bottom:4px;">代理店（外部パートナー）</div>
+        <div style="font-size:11px;color:#888;margin-bottom:12px;">差額卸・情報共有のみ</div>
+        <div class="flow-line"><span class="flow-line-arrow">1.</span><span>専用Slack ゲストチャンネル（無料メンバーとして参加）</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">2.</span><span>自社が担当するブースの数字のみ共有（他社情報は非公開）</span></div>
+        <div class="flow-line"><span class="flow-line-arrow">3.</span><span>NAILIT社内のNotionには権限なし（情報漏洩リスクゼロ）</span></div>
+        <div style="margin-top:10px;font-size:10px;color:#888;background:#FFFDE7;border-radius:6px;padding:6px 8px;">※ 代理店向け詳細設計はPhase 0のヒアリング後に別途策定</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- カード3：データフロー -->
+  <div class="card">
+    <div class="card-title"><div class="card-icon" style="background:#E8F5E9">🔄</div>データフロー（情報の流れ）</div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;">
+      <div style="flex:1;min-width:300px;">
+        <div style="background:#E8F5E9;border:2px solid #A5D6A7;border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+          <div style="font-size:11px;font-weight:700;color:#1B5E20;margin-bottom:8px;">① データ収集（Layer 1）</div>
+          <div class="flow-line"><span style="font-size:18px;">📝</span><span><b>Googleフォーム（日報）</b> → Googleスプレッドシート（自動蓄積）</span></div>
+          <div class="flow-line"><span style="font-size:18px;">📷</span><span><b>OCRルート（帳票義務の場合）</b> → Gemini → スプレッドシート</span></div>
+        </div>
+        <div style="text-align:center;font-size:20px;color:#999;margin:4px 0;">↓ Make が検知・同期</div>
+        <div style="background:#FBE9E7;border:2px solid #FFAB91;border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+          <div style="font-size:11px;font-weight:700;color:#BF360C;margin-bottom:8px;">② 管理・集約（Layer 2）</div>
+          <div class="flow-line"><span style="font-size:18px;">📊</span><span><b>Notion 営業DB</b>（KPI・フェーズ・転換率）</span></div>
+          <div class="flow-line"><span style="font-size:18px;">📋</span><span><b>Notion 案件DB</b>（リード〜クロージング）</span></div>
+          <div class="flow-line"><span style="font-size:18px;">📁</span><span><b>Notion 契約DB</b> ←→ Google Drive（契約書PDF）＋期限アラート</span></div>
+          <div class="flow-line"><span style="font-size:18px;">📚</span><span><b>Notion wiki</b>（SOP・マニュアル・ロープレ動画リンク）</span></div>
+        </div>
+        <div style="text-align:center;font-size:20px;color:#999;margin:4px 0;">↓ Make が自動配信</div>
+        <div style="background:#EDE7F6;border:2px solid #CE93D8;border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;font-weight:700;color:#4A148C;margin-bottom:8px;">③ コミュニケーション（Layer 3）</div>
+          <div class="flow-line"><span style="font-size:18px;">🌅</span><span><b>#kpi-daily-summary</b>：毎朝9時、昨日の全体実績を自動投稿</span></div>
+          <div class="flow-line"><span style="font-size:18px;">⚡</span><span><b>#important-alert</b>：KPI未達・重クレームを即時通知</span></div>
+          <div class="flow-line"><span style="font-size:18px;">🏬</span><span><b>#booth-deadline-alert</b>：ブース申請期限3日前に自動警告</span></div>
+        </div>
+      </div>
+      <div style="min-width:200px;max-width:240px;">
+        <div class="card" style="padding:16px;margin-bottom:0;background:#F8F9FA;">
+          <div style="font-weight:700;font-size:13px;margin-bottom:12px;color:#333;">Makeが担う自動化</div>
+          <div style="font-size:11px;line-height:2;color:#555;">
+            <div>📤 フォーム → Notion 同期</div>
+            <div>📊 Sheets集計 → Slack速報</div>
+            <div>📅 期限アラート → Slack</div>
+            <div>🔔 KPI未達 → Slack通知</div>
+            <div>📋 週次ランキング → Slack</div>
+          </div>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid #DDD;font-size:11px;color:#888;line-height:1.7;">一度設定すると、以後は自動で動き続ける。手動での転記・通知は不要。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- カード4：案1 vs 案2 比較 -->
+  <div class="card">
+    <div class="card-title"><div class="card-icon" style="background:#FFF9C4">⚖️</div>案1（Phase 1 To-Be）vs 案2（全社DX To-Be）の比較</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:600px;">
+        <tr style="background:#1A1A2E;color:#E6FF2F;">
+          <th style="padding:10px 14px;text-align:left;border:1px solid #333;width:22%;">観点</th>
+          <th style="padding:10px 14px;text-align:left;border:1px solid #333;width:35%;">案1（Phase 1 To-Be）</th>
+          <th style="padding:10px 14px;text-align:left;border:1px solid #333;width:35%;">案2（全社DX To-Be）</th>
+        </tr>
+        <tr style="background:#fff;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">日報入力窓口</td><td style="padding:9px 14px;border:1px solid #EEE;">Notionフォーム or OCR（ルートA/B）</td><td style="padding:9px 14px;border:1px solid #EEE;color:#1B5E20;font-weight:600;">Googleフォーム → Googleスプレッドシート</td></tr>
+        <tr style="background:#F8F8F8;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">GWSの扱い</td><td style="padding:9px 14px;border:1px solid #EEE;">Phase 1の1項目として導入</td><td style="padding:9px 14px;border:1px solid #EEE;color:#0D47A1;font-weight:600;">全社基盤として前面に配置</td></tr>
+        <tr style="background:#fff;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">契約管理</td><td style="padding:9px 14px;border:1px solid #EEE;">Notion 契約DBとして設計</td><td style="padding:9px 14px;border:1px solid #EEE;color:#1B5E20;font-weight:600;">Drive連携＋期限アラート込みで設計</td></tr>
+        <tr style="background:#F8F8F8;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">代理店連携</td><td style="padding:9px 14px;border:1px solid #EEE;color:#888;">スコープ外（Phase 2以降）</td><td style="padding:9px 14px;border:1px solid #EEE;color:#1B5E20;font-weight:600;">アーキテクチャに最初から含める</td></tr>
+        <tr style="background:#fff;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">対象範囲</td><td style="padding:9px 14px;border:1px solid #EEE;">営業フロー中心</td><td style="padding:9px 14px;border:1px solid #EEE;color:#1B5E20;font-weight:600;">全社（営業・マネジメント・代理店・契約）</td></tr>
+        <tr style="background:#F8F8F8;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">採用条件</td><td style="padding:9px 14px;border:1px solid #EEE;">GWSなし or 段階的に進める場合</td><td style="padding:9px 14px;border:1px solid #EEE;color:#0D47A1;font-weight:600;">GWSを最初に導入することが決まった場合</td></tr>
+        <tr style="background:#fff;"><td style="padding:9px 14px;border:1px solid #EEE;font-weight:600;">工数・金額</td><td style="padding:9px 14px;border:1px solid #EEE;">現行見積もり範囲内</td><td style="padding:9px 14px;border:1px solid #EEE;">現行見積もり範囲内（入力窓口の変更のみ）</td></tr>
+      </table>
+    </div>
+    <div style="margin-top:14px;padding:10px 14px;background:#FFF9C4;border-radius:8px;font-size:12px;color:#5D4037;border:1px solid #F0C040;">
+      💡 <b>どちらを選ぶかはPhase 0のヒアリングで決める。</b> 「GWSを入れる経営判断があるか」「現場100名のスマホ操作レベル」「帳票が義務かどうか」を確認してから選定。金額は変わらない。
     </div>
   </div>
 </div>
