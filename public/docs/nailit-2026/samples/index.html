@@ -155,6 +155,29 @@
   .gws-pillar-icon { font-size: 24px; margin-bottom: 8px; }
   .gws-pillar-title { font-weight: 700; font-size: 13px; color: #0D47A1; margin-bottom: 6px; }
   .gws-pillar-body { font-size: 11px; color: #444; line-height: 1.7; }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .nav .brand { padding: 12px 14px; font-size: 11px; }
+    .section { padding: 20px 16px; }
+    .section-title { font-size: 18px; }
+    .card { padding: 16px; }
+    .flow-section h3 { font-size: 12px; }
+    .schema-wrap { gap: 12px; }
+    .db-table { min-width: 0; width: 100%; }
+    .slack-workspace { padding: 14px; }
+    .slack-channel { font-size: 12px; }
+    .compare { gap: 12px; }
+    .compare-block { padding: 14px; }
+    .gws-pillar { min-width: 100%; }
+    .layer { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .layer-num { min-width: auto; }
+  }
+
+  /* スクロール可能エリアのヒント */
+  .scroll-hint { font-size: 11px; color: #999; margin-bottom: 6px; display: none; }
+  @media (max-width: 640px) { .scroll-hint { display: block; } }
+  .flow, .timeline-wrap { -webkit-overflow-scrolling: touch; }
 </style>
 </head>
 <body>
@@ -180,6 +203,7 @@
 
   <div class="card">
     <div class="card-title"><div class="card-icon" style="background:#FFEBEE">🛒</div>催事当日〜翌日：営業入力フロー</div>
+    <div class="scroll-hint">← 横にスクロールできます →</div>
     <div class="flow as-is">
       <div class="flow-step">
         <div class="flow-box">
@@ -693,6 +717,7 @@
 
   <div class="card">
     <div class="card-title"><div class="card-icon" style="background:#E8F5E9">📅</div>Phase 0 〜 Phase 1 ガントチャート</div>
+    <div class="scroll-hint">← 横にスクロールできます →</div>
     <div class="timeline-wrap">
       <div class="timeline">
         <!-- Header -->
